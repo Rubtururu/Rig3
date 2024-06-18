@@ -1,8 +1,19 @@
-    window.addEventListener('load', function() {
-            
-      refresh_gui_dapp();
+   window.rigwarsLoaded = 0;
+   
+   window.addEventListener('load', function() {
+            if (typeof web3 !== 'undefined') 
+            {
 
-    });
+            window.ethereum.enable();
+
+            startApp(web3);
+            } 
+            else 
+            { 
+              $('#metamask_alert_message').html(gametext.error[0]);
+              $('#metamask_alert').modal('show');
+            }
+            });
 
       // CONTRACT ADDRESSS! 
       const contract_address = "0x09aC30EA11B192AA19B8a4d46022b3401483f583";
